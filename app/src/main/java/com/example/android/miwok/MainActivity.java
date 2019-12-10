@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,13 +31,25 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        NumbersClickListener clickListener = new NumbersClickListener();
-
         //Find view that show numbers category
-        TextView  numbers = (TextView)findViewById(R.id.numbers);
+        TextView numbers = (TextView) findViewById(R.id.numbers);
 
         //set a clickListener on that view
-        numbers.setOnClickListener(clickListener);
-    }
+        numbers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // Toast.makeText(view.getContext(), "Open List of Number", Toast.LENGTH_SHORT).show();
+                Intent numbersIntent = new Intent(MainActivity.this,NumbersActivity.class);
 
+                //satrt the new activity
+                startActivity(numbersIntent);
+            }
+        });
+
+//    public void openNumbersList(View view){
+//        Intent i = new Intent(this, NumbersActivity.class);
+//        startActivity(i);
+//
+//    }Explicit intent
+    }
 }
